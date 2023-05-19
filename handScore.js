@@ -38,7 +38,9 @@ function getHandScore(hand) {
         "H": 0,
         "D": 0
     }
+    
     const cardsInHand = {}
+    const rankPoint = {}
     const arrayOfCards = hand.toUpperCase().split(" ")
     if (arrayOfCards.length > 3 || arrayOfCards.length < 3) {
         console.log("Invalid input of cards, Cards cannot be less or more than 3");
@@ -48,6 +50,7 @@ function getHandScore(hand) {
     //Points for each card from 2-10 and special card such as J Q K and Ace
     for (let card of arrayOfCards) {
         cardsInHand[card] = (cardsInHand[card] || 0) + 1
+        rankPoint[card[1]] = (rankPoint[card[1]] || 0) + 1
         const faceCard = card[1];
         if (card.length === 3 || faceCard === 'J' || faceCard === 'Q' || faceCard === 'K' ) {
             suitPoint[card[0]] = suitPoint[card[0]] + 10;
@@ -63,7 +66,7 @@ function getHandScore(hand) {
     //Giving Points to special winning sets
     for (let card in cardsInHand) {
         //console.log(card[0])
-        if (cardsInHand[card] === 3) {
+        if (cardsInHand[card] === 3 || rankPoint[card[1]] === 3) {
             if (suitPoint[card[0]] < 33) {
                 suitPoint[card[0]] = 32.5;
             } else {
@@ -72,9 +75,8 @@ function getHandScore(hand) {
         }
     }
 
-    console.log(cardsInHand)
-    console.log(suitPoint)
-    //Compare and find the 
+    
+    //Compare and find the highest point
     
     for (let suit in suitPoint) {
         if (suitPoint[suit] > highestPoint) {
@@ -86,5 +88,5 @@ function getHandScore(hand) {
     
 }
 //Output
-//const highestScore = getHandScore("S5 S5 D10");
-//console.log('The Highest score from the 3 cards hand is ', highestScore);
+const highestScore = getHandScore("S3 D2 H3");
+console.log('The Highest score from the 3 cards hand is ', highestScore);

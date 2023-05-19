@@ -18,8 +18,6 @@
 
 */
 
-
-
 //function to calculate degree of hour
 function calHourDeg(hour,min) {
     return ( hour === 0 ? 360 : (hour * 5 * 6) + (min * 0.5));
@@ -34,7 +32,6 @@ function getClockAngle(time) {
     let minDeg;
     let hourDeg;
     const timeArray = time.split(":");
-    
     //input for 00 == 24 and 0 <= mm < 60 all is non-negative
     if ( Number(timeArray[0] > 24 || Number(timeArray[0]) < 0 || Number(timeArray[1]) > 59 )){
         console.log("Invalid Input");
