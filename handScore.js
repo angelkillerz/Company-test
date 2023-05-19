@@ -88,5 +88,5 @@ function getHandScore(hand) {
     
 }
 //Output
-const highestScore = getHandScore("S3 D2 H3");
-console.log('The Highest score from the 3 cards hand is ', highestScore);
+//const highestScore = getHandScore("S3 D3 H3");
+//console.log('The Highest score from the 3 cards hand is ', highestScore);
